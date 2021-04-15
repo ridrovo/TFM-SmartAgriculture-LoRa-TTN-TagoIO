@@ -37,17 +37,17 @@
 // first. When copying an EUI from ttnctl output, this means to reverse
 // the bytes. For TTN issued EUIs the last bytes should be 0xD5, 0xB3,
 // 0x70.
-   static const u1_t PROGMEM APPEUI[8]={ 0x25, 0x12, 0x04, 0xD0, 0x7E, 0xD5, 0xB3, 0x70 };
+   static const u1_t PROGMEM APPEUI[8]={ };
    void os_getArtEui (u1_t* buf) { memcpy_P(buf, APPEUI, 8);}
 
 // This should also be in little endian format, see above.
-   static const u1_t PROGMEM DEVEUI[8]={ 0x9E, 0xC5, 0x24, 0xD3, 0x56, 0xBE, 0x39, 0x00 };
+   static const u1_t PROGMEM DEVEUI[8]={ };
    void os_getDevEui (u1_t* buf) { memcpy_P(buf, DEVEUI, 8);}
 
 // This key should be in big endian format (or, since it is not really a
 // number but a block of memory, endianness does not really apply). In
 // practice, a key taken from ttnctl can be copied as-is.
-   static const u1_t PROGMEM APPKEY[16] = { 0x8A, 0x10, 0x78, 0xBC, 0xDE, 0x33, 0x00, 0xE2, 0x08, 0x7D, 0xC0, 0x33, 0x89, 0x12, 0x1F, 0x87 };
+   static const u1_t PROGMEM APPKEY[16] = { };
    void os_getDevKey (u1_t* buf) {  memcpy_P(buf, APPKEY, 16);}
 
 
