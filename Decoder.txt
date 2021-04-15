@@ -1,0 +1,24 @@
+function Decoder(bytes, port) {
+   var temperature  = (bytes[0] | bytes[1]<<8  | bytes[2]<<16  | (bytes[2] & 0x80 ? 0xFF<<24 : 0));
+   var humidity     = (bytes[3] | bytes[4]<<8  | bytes[5]<<16  | (bytes[5] & 0x80 ? 0xFF<<24 : 0));
+   var latitude     = (bytes[6] | bytes[7]<<8  | bytes[8]<<16  | (bytes[8] & 0x80 ? 0xFF<<24 : 0));
+   var longitude    = (bytes[9] | bytes[10]<<8 | bytes[11]<<16 | (bytes[11] & 0x80 ? 0xFF<<24 : 0));
+   var altitude     = (bytes[12]| bytes[13]<<8 | bytes[14]<<16 | (bytes[14] & 0x80 ? 0xFF<<24 : 0));
+   var database     = (bytes[15]| bytes[16]<<8 | bytes[17]<<16 | (bytes[17] & 0x80 ? 0xFF<<24 : 0));
+
+   
+   return {
+     database: database * 1,
+     location: {
+        latitude:  latitude/10000,
+        longitude: longitude/10000,
+        altitude: altitude/10000,
+     },
+     
+     DHT11: {
+      humidity: (humidity/100),
+      temperature: (temperature/100),
+     }
+     
+   }
+}
